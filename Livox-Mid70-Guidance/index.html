@@ -9,7 +9,7 @@
         
         <link rel="shortcut icon" href="../favicon.ico">
         
-        <title>Hardware Support - 厦门大学·RoboMaster·软件标准化</title>
+        <title>Development Guide - 厦门大学·RoboMaster·软件标准化</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
@@ -34,7 +34,7 @@
                 <div id="navbar-collapse" class="navbar-collapse collapse">
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
-                            <li class="dropdown active">
+                            <li class="dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Overview <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
@@ -43,7 +43,7 @@
 </li>
                                     
 <li>
-    <a href="./" class="dropdown-item active">Hardware Support</a>
+    <a href="../Hardware-Support/" class="dropdown-item">Hardware Support</a>
 </li>
                                 </ul>
                             </li>
@@ -81,12 +81,12 @@
 </li>
                                 </ul>
                             </li>
-                            <li class="dropdown">
+                            <li class="dropdown active">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Livox Mid-70 <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../Livox-Mid70-Guidance/" class="dropdown-item">Development Guide</a>
+    <a href="./" class="dropdown-item active">Development Guide</a>
 </li>
                                 </ul>
                             </li>
@@ -117,12 +117,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../Introduction/" class="nav-link">
+                                <a rel="prev" href="../Motor-Control/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../Software-Install/" class="nav-link">
+                                <a rel="next" href="../Motor-Parameters/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -144,8 +144,20 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="2"><a href="#_1" class="nav-link">硬件支持</a>
+            <li class="nav-item" data-level="1"><a href="#livox-mid-70" class="nav-link">Livox Mid-70开发文档</a>
               <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#1" class="nav-link">1.资料地址</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#2" class="nav-link">2.环境配置</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#3" class="nav-link">3.样例测试</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -153,10 +165,146 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h2 id="_1">硬件支持</h2>
-<p><img alt="电路星空" src="../Image/Hardware-Support/%E7%94%B5%E8%B7%AF%E6%98%9F%E7%A9%BA.png" /></p>
-<p>详情请见：</p>
-<p>厦门大学 RoboMaster 硬件标准化文档</p></div>
+<h1 id="livox-mid-70">Livox Mid-70开发文档</h1>
+<h2 id="1">1.资料地址</h2>
+<pre><code>#官网网址
+https://www.livoxtech.com/cn
+#资料下载中心
+https://www.livoxtech.com/cn/downloads
+#Livox-SDK Github文档
+https://github.com/Livox-SDK/Livox-SDK
+#Livox ROS2-driver文档
+https://github.com/Livox-SDK/livox_ros2_driver
+</code></pre>
+<h2 id="2">2.环境配置</h2>
+<p>Livox-SDK支持的Ubuntu版本为14.04、16.04、18.04。ROS2支持的版本为18.04。</p>
+<h3 id="21-ros2-dashing-desktop">2.1 ROS2-dashing-desktop安装</h3>
+<h4 id="211">2.1.1 设置编码语言区域</h4>
+<pre><code>locale #查看是否有UTF-8编码格式，如果没有则按照下面的命令行代码设置
+
+sudo apt update &amp;&amp; sudo apt install locales
+sudo locale-gen en_US en_US.UTF-8
+sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+locale #验证是否设置好
+</code></pre>
+<h4 id="212">2.1.2 设置源</h4>
+<pre><code>#添加ROS2 apt repositories
+sudo apt update &amp;&amp; sudo apt install curl gnupg2 lsb-release
+sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key  -o /usr/share/keyrings/ros-archive-keyring.gpg
+#添加repository至sources list
+echo &quot;deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(lsb_release -cs) main&quot; | sudo tee /etc/apt/sources.list.d/ros2.list &gt; /dev/null
+</code></pre>
+<h4 id="213-ros2-package">2.1.3  安装ROS2 package</h4>
+<pre><code>#更新apt源
+sudo apt update
+#下载桌面版dashing
+sudo apt install ros-dashing-desktop
+#source进环境变量
+vi ~/.bashrc
+在最后一行添加入以下代码
+source /opt/ros/dashing/setup.bash
+#如果没有下载vim插件，可以用以下代码进行安装
+sudo apt-get install vim-gtk
+</code></pre>
+<h4 id="214">2.1.4 样例测试</h4>
+<pre><code>ros2 run demo_nodes_cpp talker
+ros2 run demo_nodes_py listener
+</code></pre>
+<h4 id="215-argcomplete">2.1.5 添加参数自动补全插件argcomplete</h4>
+<pre><code>sudo apt install -y python3-pip
+pip3 install -U argcomplete
+</code></pre>
+<h3 id="22-colcon">2.2 colcon 安装</h3>
+<pre><code>sudo apt install python3-colcon-common-extensions
+</code></pre>
+<h3 id="23-livox-sdk">2.3 Livox-SDK安装</h3>
+<h4 id="231-cmake">2.3.1 cmake安装</h4>
+<pre><code>#如果Ubuntu环境中没有cmake或者cmake版本低于3.0.0，则需要用以下命令进行安装
+sudo apt install cmake
+</code></pre>
+<h4 id="232-livox-sdk-directory">2.3.2 Livox-SDK directory 下载、编译</h4>
+<pre><code>git clone https://github.com/Livox-SDK/Livox-SDK.git
+#如果没有git，通过以下命令进行安装
+sudo apt-get install git
+#如果上面代码下载很慢或者报错，大概率是github网站被防火墙墙了，需要挂代理，可以通过以下代码进行挂代理
+git clone https://ghproxy.com/https://github.com/Livox-SDK/Livox-SDK.git
+#编译Livox-SDK
+cd Livox-SDK
+#因为Jetson NX是ARM架构，所以需要采用交叉编译方式
+#如果没有交叉编译工具链，可以通过以下命令进行下载
+sudo apt-get install gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
+#编译
+build &amp;&amp; \
+cmake .. -DCMAKE_SYSTEM_NAME=Linux -DCMAKE_C_COMPILER=aarch64-linux-gnu-gcc -DCMAKE_CXX_COMPILER=aarch64-linux-gnu-g++ -DCMAKE_DEPENDENT_CODE=ON
+#上面编译指令加上了-DCMAKE_POSITION_DEPENDENT_CODE=ON是非常重要的，否则后续ROS2的编译会报错
+make
+#将编译后的静态库等文件安装到系统中
+sudo make install
+</code></pre>
+<h3 id="24-livox-ros2-driver">2.4 Livox-ros2-driver驱动文件安装</h3>
+<pre><code>#git克隆仓库,在home目录底下进行clone
+git clone https://github.com/Livox-SDK/livox_ros2_driver.git ws_livox/src
+#编译
+cd ws_livox
+colcon build
+#在上述的colcon build过程中需要用到一下的python包，如果没有需要手动安装，否则会报错
+pip install empy
+pip install lark
+pip install numpy
+#在运行ROS2程序时，需要将install/setup.sh添加入环境变量
+source ~/ws_livox/install/setup.sh
+#上面命令是仅在当前命令行终端有效，如果需要永久配置也可以按照下面方式
+vi ~/.bashrc
+在最后一行添加
+source ~/ws_livox/install/setup.sh
+</code></pre>
+<h2 id="3">3.样例测试</h2>
+<h3 id="31">3.1 硬件连接</h3>
+<p><img alt="image-20230103104051700" src="C:\Users\Su\AppData\Roaming\Typora\typora-user-images\image-20230103104051700.png" /></p>
+<p>以太网线连接到Jetson NX上即可</p>
+<p>需要配置将Ubuntu系统网口配置成静态IP</p>
+<p>通过ifconfig查看网口名称，这里是eth0</p>
+<pre><code>sudo ifconfig eth0 192.168.1.50
+</code></pre>
+<h3 id="32-livox-sdk">3.2 Livox SDK测试</h3>
+<pre><code>cd Livox-SDK/build/sample/lidar
+#下面的一串符号是它的Broadcast Code，通过扫描Livox背后的二维码得到，然后最后一位是附加号，Livox Mid-70是1
+./lidar_sample -c &quot;3GGDJB3001P8491&quot; -l
+#如果显示很多数据，就说明已经测试成功了，如果测试不成功，大概率是NX和Livox不在同一局域网上，Livox如果没有修改成动态IP，那么它的IP地址就是192.168.1.149，49是序列号中除了附加位后的最后两位，可以通过ping 192.168.1.149测试是否连通，如果实在ping不通可以将livox和nx连接到同一个路由器上，然后在路由器网关页面查看连接的设备，如果有显示一个ip为192.168.1.149的设备，那么这时候就能ping通了，然后再进行上面的测试即可
+</code></pre>
+<p>可以将序列号添加入代码中，从而不需要命令行手中输入序列号</p>
+<pre><code>vi ~/Livox-SDK/sample/lidar/main.c
+#将序列号添加入下面即可
+char broadcast_code_list[kMaxLidarCount][kBroadcastCodeSize]={
+&quot;0000000000000001&quot;
+}
+#记得修改BROADCAST_CODE_LIST_SIZE，上面有几个序列号它的值就是多少
+#define BROADCAST_CODE_LIST_SIZE 3
+</code></pre>
+<h3 id="33-ros2">3.3 ROS2 测试</h3>
+<h4 id="331-config">3.3.1 修改config文件</h4>
+<pre><code>cd ~/ws_livox/src/livox_ros2_driver/config
+vi livox_lidar_config.json
+#将序列号添加到broadcast_code中，同时将enable_connect修改为true
+</code></pre>
+<h4 id="332-livox_ros2_drivercpp">3.3.2 修改livox_ros2_driver.cpp</h4>
+<pre><code>cd ~/ws_livox/src/livox_ros2_driver/livox_ros2_driver
+vi livox_ros2_driver
+#修改第94行的user_config_path，将path_default修改为下述地址
+&quot;~/ws_livox/src/livox_ros2_driver/config/livox_lidar_config.json&quot;
+</code></pre>
+<h4 id="333-livox">3.3.3 运行livox节点测试</h4>
+<p>因为下载下来的launch文件都有问题，所以只能使用ros2 run <package><node>来运行程序</p>
+<pre><code>cd ~/ws_livox
+colcon build
+ros2 run livox_ros2_driver livox_ros2_driver_node
+#运行rviz2查看点云图
+rviz2
+#添加pointcloud2点云图插件，将topic修改为/livox/lidar
+#将frame_id修改为frame_default
+</code></pre></div>
             </div>
         </div>
 
