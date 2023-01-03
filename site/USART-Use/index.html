@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="ASR-Crash">
+        
+        <link rel="shortcut icon" href="../favicon.ico">
+        
+        <title>USART - 厦门大学·RoboMaster·软件标准化</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">厦门大学·RoboMaster·软件标准化</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Overview <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../Introduction/" class="dropdown-item">Introduction</a>
+</li>
+                                    
+<li>
+    <a href="../Hardware-Support/" class="dropdown-item">Hardware Support</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Beginners <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../Software-Install/" class="dropdown-item">Software Install</a>
+</li>
+                                    
+<li>
+    <a href="../Getting-Started/" class="dropdown-item">Getting Started</a>
+</li>
+                                    
+<li>
+    <a href="../TIM-Use/" class="dropdown-item">TIM</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active">USART</a>
+</li>
+                                    
+<li>
+    <a href="../CAN-Use/" class="dropdown-item">CAN</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Algorithms <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../Motor-Control/" class="dropdown-item">Motor Control</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Livox Mid-70 <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../Livox-Mid70-Guidance/" class="dropdown-item">Development Guide</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">References <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../Motor-Parameters/" class="dropdown-item">Motor Parameters</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">FAQs <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../How-to-Debug/" class="dropdown-item">How to Debug</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../TIM-Use/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../CAN-Use/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#usarthusartcpp" class="nav-link">usart.h和usart.cpp文件的使用</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#usarth" class="nav-link">usart.h</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#usartcpp" class="nav-link">usart.cpp</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<p>串口USART通信可以支持我们使用一些扩展设备，如陀螺仪、遥控器、裁判系统等等</p>
+<h1 id="usarthusartcpp">usart.h和usart.cpp文件的使用</h1>
+<h2 id="usarth">usart.h</h2>
+<pre><code class="language-c++">#pragma once
+#include &quot;stm32f4xx_hal.h&quot;
+#include &quot;stm32f4xx_hal_uart.h&quot;
+
+#define UART_MAX_LEN 100
+
+class UART
+{
+    public:
+    UART&amp; Init(USART_TypeDef* Instance, uint32_t BaudRate);
+    UART&amp; DMATxInit(void);
+    UART&amp; DMARxInit(const uint8_t *buffer = nullptr,const uint32_t size = UART_MAX_LEN);
+
+    void DMATransmit(uint8_t* pData, uint32_t Size) const;
+    void OnUARTITHandler(uint16_t Size);
+    void OnDMAITHandler(void) const;
+    void RxIdleItCallback(uint16_t rxSize) const;
+    void UARTTransmit(uint8_t* pData, uint32_t Size);
+
+    static void DMAClearAllFlags(DMA_HandleTypeDef *dmax)
+    {
+        const auto ele = reinterpret_cast&lt;uint32_t&gt;(dmax-&gt;Instance);
+
+        (ele == reinterpret_cast&lt;uint32_t&gt;DMA1_Stream0) ? (DMA1-&gt;LIFCR = 0x0000003D) :\
+            (ele == reinterpret_cast&lt;uint32_t&gt;DMA1_Stream1) ? (DMA1-&gt;LIFCR = 0x00000F40) :\
+            (ele == reinterpret_cast&lt;uint32_t&gt;DMA1_Stream2) ? (DMA1-&gt;LIFCR = 0x003D0000) :\
+            (ele == reinterpret_cast&lt;uint32_t&gt;DMA1_Stream3) ? (DMA1-&gt;LIFCR = 0x0F400000) :\
+            (ele == reinterpret_cast&lt;uint32_t&gt;DMA1_Stream4) ? (DMA1-&gt;HIFCR = 0x0000003D) :\
+            (ele == reinterpret_cast&lt;uint32_t&gt;DMA1_Stream5) ? (DMA1-&gt;HIFCR = 0x00000F40) :\
+            (ele == reinterpret_cast&lt;uint32_t&gt;DMA1_Stream6) ? (DMA1-&gt;HIFCR = 0x003D0000) :\
+            (ele == reinterpret_cast&lt;uint32_t&gt;DMA1_Stream7) ? (DMA1-&gt;HIFCR = 0x0F400000) :\
+            (ele == reinterpret_cast&lt;uint32_t&gt;DMA2_Stream0) ? (DMA2-&gt;LIFCR = 0x0000003D) :\
+            (ele == reinterpret_cast&lt;uint32_t&gt;DMA2_Stream1) ? (DMA2-&gt;LIFCR = 0x00000F40) :\
+            (ele == reinterpret_cast&lt;uint32_t&gt;DMA2_Stream2) ? (DMA2-&gt;LIFCR = 0x003D0000) :\
+            (ele == reinterpret_cast&lt;uint32_t&gt;DMA2_Stream3) ? (DMA2-&gt;LIFCR = 0x0F400000) :\
+            (ele == reinterpret_cast&lt;uint32_t&gt;DMA2_Stream4) ? (DMA2-&gt;HIFCR = 0x0000003D) :\
+            (ele == reinterpret_cast&lt;uint32_t&gt;DMA2_Stream5) ? (DMA2-&gt;HIFCR = 0x00000F40) :\
+            (ele == reinterpret_cast&lt;uint32_t&gt;DMA2_Stream6) ? (DMA2-&gt;HIFCR = 0x003D0000) :\
+            (DMA2-&gt;HIFCR = 0x0F400000);
+    }
+
+    UART_HandleTypeDef huart;
+    uint8_t m_uartrx[UART_MAX_LEN];
+};
+
+extern UART uart1,uart2, uart4, uart6;// , uart6, uart7;
+</code></pre>
+<h2 id="usartcpp">usart.cpp</h2>
+<pre><code class="language-c++">#include &quot;usart.h&quot;
+#include &quot;RC.h&quot;
+#include &quot;judgement.h&quot;
+
+UART&amp; UART::Init(USART_TypeDef* Instance, const uint32_t BaudRate)
+{
+    huart.Instance = Instance;
+    huart.Init.BaudRate = BaudRate;
+    huart.Init.WordLength = UART_WORDLENGTH_8B;
+    huart.Init.StopBits = UART_STOPBITS_1;
+    huart.Init.Parity = UART_PARITY_NONE;
+    huart.Init.Mode = UART_MODE_TX_RX;
+    huart.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+    huart.Init.OverSampling = UART_OVERSAMPLING_16;
+    HAL_UART_Init(&amp;huart);
+
+    return *this;
+}
+UART&amp; UART::DMATxInit(void)
+{
+    __HAL_DMA_DISABLE(huart.hdmatx);
+    huart.hdmatx-&gt;Instance-&gt;PAR = reinterpret_cast&lt;uint32_t&gt;(&amp;huart.Instance-&gt;DR);
+    huart.hdmatx-&gt;Instance-&gt;M0AR = 0;
+    DMAClearAllFlags(huart.hdmatx);
+    //开启DMA发送中断
+    __HAL_DMA_ENABLE_IT(huart.hdmatx, DMA_IT_TC);
+    SET_BIT(huart.Instance-&gt;CR3, USART_CR3_DMAT);
+    return *this;
+}
+UART&amp; UART::DMARxInit(const uint8_t *buffer, const uint32_t size)
+{
+    //使能串口DMA接收
+    __HAL_DMA_DISABLE(huart.hdmarx);
+    huart.hdmarx-&gt;Instance-&gt;PAR = reinterpret_cast&lt;uint32_t&gt;(&amp;huart.Instance-&gt;DR);//PAR is DMA stream x peripheral address register
+    huart.hdmarx-&gt;Instance-&gt;NDTR = size;
+    if (buffer == nullptr)buffer = m_uartrx;
+    huart.hdmarx-&gt;Instance-&gt;M0AR = reinterpret_cast&lt;uint32_t&gt;(buffer);
+    DMAClearAllFlags(huart.hdmarx);
+    __HAL_DMA_ENABLE(huart.hdmarx);
+    SET_BIT(huart.Instance-&gt;CR3, USART_CR3_DMAR);
+    //开启串口空闲中断
+    __HAL_UART_CLEAR_PEFLAG(&amp;huart);
+    __HAL_UART_ENABLE_IT(&amp;huart, UART_IT_IDLE);
+    return *this;
+}
+void HAL_UART_MspInit(UART_HandleTypeDef* uartHandle)
+{
+    GPIO_InitTypeDef GPIO_InitStruct;
+    if (uartHandle-&gt;Instance == USART1)
+    {
+        static DMA_HandleTypeDef hdma_rx;
+        static DMA_HandleTypeDef hdma_tx;
+        /* USART6 clock enable */
+        __HAL_RCC_USART1_CLK_ENABLE();
+        __HAL_RCC_GPIOA_CLK_ENABLE();
+
+        /**USART6 GPIO Configuration
+            PG14     ------&gt; USART6_TX
+            PG9     ------&gt; USART6_RX
+            */
+        GPIO_InitStruct.Pin = GPIO_PIN_9 | GPIO_PIN_10;
+        GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+        GPIO_InitStruct.Pull = GPIO_PULLUP;
+        GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+        GPIO_InitStruct.Alternate = GPIO_AF7_USART1;
+        HAL_GPIO_Init(GPIOA, &amp;GPIO_InitStruct);
+
+        /* USART6 DMA Init */
+        __HAL_RCC_DMA2_CLK_ENABLE();
+        /* USART6_RX Init */
+        hdma_rx.Instance = DMA2_Stream2;
+        hdma_rx.Init.Channel = DMA_CHANNEL_4;
+        hdma_rx.Init.Direction = DMA_PERIPH_TO_MEMORY;
+        hdma_rx.Init.PeriphInc = DMA_PINC_DISABLE;
+        hdma_rx.Init.MemInc = DMA_MINC_ENABLE;
+        hdma_rx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
+        hdma_rx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
+        hdma_rx.Init.Mode = DMA_NORMAL;
+        hdma_rx.Init.Priority = DMA_PRIORITY_LOW;
+        hdma_rx.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
+        HAL_DMA_Init(&amp;hdma_rx);
+
+        __HAL_LINKDMA(uartHandle, hdmarx, hdma_rx);
+
+        /* USART6_TX Init */
+        hdma_tx.Instance = DMA2_Stream7;
+        hdma_tx.Init.Channel = DMA_CHANNEL_4;
+        hdma_tx.Init.Direction = DMA_MEMORY_TO_PERIPH;
+        hdma_tx.Init.PeriphInc = DMA_PINC_DISABLE;
+        hdma_tx.Init.MemInc = DMA_MINC_ENABLE;
+        hdma_tx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
+        hdma_tx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
+        hdma_tx.Init.Mode = DMA_NORMAL;
+        hdma_tx.Init.Priority = DMA_PRIORITY_LOW;
+        hdma_tx.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
+        HAL_DMA_Init(&amp;hdma_tx);
+
+        __HAL_LINKDMA(uartHandle, hdmatx, hdma_tx);
+
+        /* USART6 interrupt Init */
+        HAL_NVIC_SetPriority(USART1_IRQn, 0, 0);
+        HAL_NVIC_EnableIRQ(USART1_IRQn);
+
+        /* DMA interrupt init */
+        /* DMA2_Stream1_IRQn interrupt configuration */
+        HAL_NVIC_SetPriority(DMA2_Stream2_IRQn, 0, 0);
+        HAL_NVIC_EnableIRQ(DMA2_Stream2_IRQn);
+        /* DMA2_Stream6_IRQn interrupt configuration */
+        HAL_NVIC_SetPriority(DMA2_Stream7_IRQn, 0, 0);
+        HAL_NVIC_EnableIRQ(DMA2_Stream7_IRQn);
+    }
+    if (uartHandle-&gt;Instance == USART2)
+    {
+        static DMA_HandleTypeDef hdma_rx;
+        static DMA_HandleTypeDef hdma_tx;
+        /* USART6 clock enable */
+        __HAL_RCC_USART2_CLK_ENABLE();
+        __HAL_RCC_GPIOA_CLK_ENABLE();
+
+        /**USART6 GPIO Configuration
+            PG14     ------&gt; USART6_TX
+            PG9     ------&gt; USART6_RX
+            */
+        GPIO_InitStruct.Pin = GPIO_PIN_2 | GPIO_PIN_3;
+        GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+        GPIO_InitStruct.Pull = GPIO_PULLUP;
+        GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+        GPIO_InitStruct.Alternate = GPIO_AF7_USART2;
+        HAL_GPIO_Init(GPIOA, &amp;GPIO_InitStruct);
+
+        /* USART6 DMA Init */
+        __HAL_RCC_DMA1_CLK_ENABLE();
+        /* USART6_RX Init */
+        hdma_rx.Instance = DMA1_Stream5;
+        hdma_rx.Init.Channel = DMA_CHANNEL_4;
+        hdma_rx.Init.Direction = DMA_PERIPH_TO_MEMORY;
+        hdma_rx.Init.PeriphInc = DMA_PINC_DISABLE;
+        hdma_rx.Init.MemInc = DMA_MINC_ENABLE;
+        hdma_rx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
+        hdma_rx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
+        hdma_rx.Init.Mode = DMA_NORMAL;
+        hdma_rx.Init.Priority = DMA_PRIORITY_LOW;
+        hdma_rx.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
+        HAL_DMA_Init(&amp;hdma_rx);
+
+        __HAL_LINKDMA(uartHandle, hdmarx, hdma_rx);
+
+        /* USART6_TX Init */
+        hdma_tx.Instance = DMA1_Stream6;
+        hdma_tx.Init.Channel = DMA_CHANNEL_4;
+        hdma_tx.Init.Direction = DMA_MEMORY_TO_PERIPH;
+        hdma_tx.Init.PeriphInc = DMA_PINC_DISABLE;
+        hdma_tx.Init.MemInc = DMA_MINC_ENABLE;
+        hdma_tx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
+        hdma_tx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
+        hdma_tx.Init.Mode = DMA_NORMAL;
+        hdma_tx.Init.Priority = DMA_PRIORITY_LOW;
+        hdma_tx.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
+        HAL_DMA_Init(&amp;hdma_tx);
+
+        __HAL_LINKDMA(uartHandle, hdmatx, hdma_tx);
+
+        /* USART6 interrupt Init */
+        HAL_NVIC_SetPriority(USART2_IRQn, 0, 0);
+        HAL_NVIC_EnableIRQ(USART2_IRQn);
+
+        /* DMA interrupt init */
+        /* DMA2_Stream1_IRQn interrupt configuration */
+        HAL_NVIC_SetPriority(DMA1_Stream5_IRQn, 0, 0);
+        HAL_NVIC_EnableIRQ(DMA1_Stream5_IRQn);
+        /* DMA2_Stream6_IRQn interrupt configuration */
+        HAL_NVIC_SetPriority(DMA1_Stream6_IRQn, 0, 0);
+        HAL_NVIC_EnableIRQ(DMA1_Stream6_IRQn);
+    }
+    if (uartHandle-&gt;Instance == UART4)
+    {
+        static DMA_HandleTypeDef hdma_rx;
+        static DMA_HandleTypeDef hdma_tx;
+        /* USART1 clock enable */
+        __HAL_RCC_UART4_CLK_ENABLE();
+        __HAL_RCC_GPIOA_CLK_ENABLE();
+
+        /**USART1 GPIO Configuration
+            PA0     ------&gt; UART4_TX
+            PA1     ------&gt; UART4_RX
+            */
+        GPIO_InitStruct.Pin = GPIO_PIN_0 | GPIO_PIN_1;
+        GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+        GPIO_InitStruct.Pull = GPIO_PULLUP;
+        GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+        GPIO_InitStruct.Alternate = GPIO_AF8_UART4;
+        HAL_GPIO_Init(GPIOA, &amp;GPIO_InitStruct);
+
+        /* USART1 DMA Init */
+        __HAL_RCC_DMA1_CLK_ENABLE();
+        /* USART1_RX Init */
+        hdma_rx.Instance = DMA1_Stream2;
+        hdma_rx.Init.Channel = DMA_CHANNEL_4;
+        hdma_rx.Init.Direction = DMA_PERIPH_TO_MEMORY;
+        hdma_rx.Init.PeriphInc = DMA_PINC_DISABLE;
+        hdma_rx.Init.MemInc = DMA_MINC_ENABLE;
+        hdma_rx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
+        hdma_rx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
+        hdma_rx.Init.Mode = DMA_NORMAL;
+        hdma_rx.Init.Priority = DMA_PRIORITY_VERY_HIGH;
+        hdma_rx.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
+        HAL_DMA_Init(&amp;hdma_rx);
+
+        __HAL_LINKDMA(uartHandle, hdmarx, hdma_rx);
+        /* USART1_TX Init */
+        hdma_tx.Instance = DMA1_Stream4;
+        hdma_tx.Init.Channel = DMA_CHANNEL_4;
+        hdma_tx.Init.Direction = DMA_MEMORY_TO_PERIPH;
+        hdma_tx.Init.PeriphInc = DMA_PINC_DISABLE;
+        hdma_tx.Init.MemInc = DMA_MINC_ENABLE;
+        hdma_tx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
+        hdma_tx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
+        hdma_tx.Init.Mode = DMA_NORMAL;
+        hdma_tx.Init.Priority = DMA_PRIORITY_VERY_HIGH;
+        hdma_tx.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
+        HAL_DMA_Init(&amp;hdma_tx);
+        __HAL_LINKDMA(uartHandle, hdmatx, hdma_tx);
+
+        /* USART1 interrupt Init */
+        HAL_NVIC_SetPriority(UART4_IRQn, 0, 0);
+        HAL_NVIC_EnableIRQ(UART4_IRQn);
+
+        /* DMA interrupt init */
+        /* DMA2_Stream2_IRQn interrupt configuration */
+        HAL_NVIC_SetPriority(DMA1_Stream2_IRQn, 0, 0);
+        HAL_NVIC_EnableIRQ(DMA1_Stream2_IRQn);
+        /* DMA2_Stream7_IRQn interrupt configuration */
+        HAL_NVIC_SetPriority(DMA1_Stream4_IRQn, 0, 0);
+        HAL_NVIC_EnableIRQ(DMA1_Stream4_IRQn);
+    }
+    if (uartHandle-&gt;Instance == USART6)
+    {
+        static DMA_HandleTypeDef hdma_rx;
+        static DMA_HandleTypeDef hdma_tx;
+        /* USART1 clock enable */
+        __HAL_RCC_USART6_CLK_ENABLE();
+        __HAL_RCC_GPIOC_CLK_ENABLE();
+
+        /**USART1 GPIO Configuration
+            PC6     ------&gt; USART6_TX
+            PC7     ------&gt; USART6_RX
+            */
+        GPIO_InitStruct.Pin = GPIO_PIN_6 | GPIO_PIN_7;
+        GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+        GPIO_InitStruct.Pull = GPIO_PULLUP;
+        GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+        GPIO_InitStruct.Alternate = GPIO_AF8_USART6;
+        HAL_GPIO_Init(GPIOC, &amp;GPIO_InitStruct);
+
+        /* USART6 DMA Init */
+        __HAL_RCC_DMA2_CLK_ENABLE();
+        /* USART6_RX Init */
+        hdma_rx.Instance = DMA2_Stream1;
+        hdma_rx.Init.Channel = DMA_CHANNEL_5;
+        hdma_rx.Init.Direction = DMA_PERIPH_TO_MEMORY;
+        hdma_rx.Init.PeriphInc = DMA_PINC_DISABLE;
+        hdma_rx.Init.MemInc = DMA_MINC_ENABLE;
+        hdma_rx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
+        hdma_rx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
+        hdma_rx.Init.Mode = DMA_NORMAL;
+        hdma_rx.Init.Priority = DMA_PRIORITY_LOW;
+        hdma_rx.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
+        HAL_DMA_Init(&amp;hdma_rx);
+
+        __HAL_LINKDMA(uartHandle, hdmarx, hdma_rx);
+        /* USART6_TX Init */
+        hdma_tx.Instance = DMA2_Stream6;
+        hdma_tx.Init.Channel = DMA_CHANNEL_5;
+        hdma_tx.Init.Direction = DMA_MEMORY_TO_PERIPH;
+        hdma_tx.Init.PeriphInc = DMA_PINC_DISABLE;
+        hdma_tx.Init.MemInc = DMA_MINC_ENABLE;
+        hdma_tx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
+        hdma_tx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
+        hdma_tx.Init.Mode = DMA_NORMAL;
+        hdma_tx.Init.Priority = DMA_PRIORITY_LOW;
+        hdma_tx.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
+        HAL_DMA_Init(&amp;hdma_tx);
+        __HAL_LINKDMA(uartHandle, hdmatx, hdma_tx);
+
+        /* USART1 interrupt Init */
+        HAL_NVIC_SetPriority(USART6_IRQn, 0, 0);
+        HAL_NVIC_EnableIRQ(USART6_IRQn);
+
+        /* DMA interrupt init */
+        /* DMA2_Stream2_IRQn interrupt configuration */
+        HAL_NVIC_SetPriority(DMA2_Stream1_IRQn, 0, 0);
+        HAL_NVIC_EnableIRQ(DMA2_Stream1_IRQn);
+        /* DMA2_Stream7_IRQn interrupt configuration */
+        HAL_NVIC_SetPriority(DMA2_Stream6_IRQn, 0, 0);
+        HAL_NVIC_EnableIRQ(DMA2_Stream6_IRQn);
+    }
+}
+
+void UART::RxIdleItCallback(const uint16_t rxSize) const
+{
+    if (huart.Instance == USART1)
+    {
+
+        if (nuc.rxData[0] == 'w'&amp;&amp;nuc.rxData[1] == 'h'&amp;&amp;nuc.rxData[2] == 'i'&amp;&amp;nuc.rxData[3] == 'c'&amp;&amp;nuc.rxData[4] == 'h')
+        {
+            if (judgement.ready == true)
+            {
+                uint8_t red[2] = &quot;R&quot;;
+                uint8_t blue[2] = &quot;B&quot;;
+                if (judgement.data.ext_game_robot_status_t.robot_id &lt; 10)
+                {
+                    uart1.UARTTransmit(red, 1);
+                }
+                else
+                {
+                    uart1.UARTTransmit(blue, 1);
+                }
+            }
+        }
+        else
+
+            nuc.OnIRQHandler(rxSize);
+    }
+    if (huart.Instance == USART2)
+    {
+        rc.OnIRQHandler(rxSize);
+    }
+    if (huart.Instance == UART4)
+    {
+        imu.OnIRQHandler(rxSize);
+    }
+    if (huart.Instance == USART6)
+    {
+        judgement.OnIRQHandler(rxSize);
+    }
+}
+void UART::OnUARTITHandler(const uint16_t Size = UART_MAX_LEN)
+{
+    if (__HAL_UART_GET_FLAG(&amp;huart, UART_FLAG_IDLE) &amp;&amp; __HAL_UART_GET_IT_SOURCE(&amp;huart, UART_IT_IDLE))
+    {
+        __HAL_UART_CLEAR_IDLEFLAG(&amp;huart);
+        __HAL_DMA_DISABLE(huart.hdmarx);
+
+        DMAClearAllFlags(huart.hdmarx);
+        RxIdleItCallback(Size - __HAL_DMA_GET_COUNTER(huart.hdmarx));
+
+        __HAL_DMA_SET_COUNTER(huart.hdmarx, Size);
+        __HAL_DMA_ENABLE(huart.hdmarx);
+    }
+    HAL_UART_IRQHandler(&amp;huart);
+}
+void UART::OnDMAITHandler(void) const
+{
+    UART::DMAClearAllFlags(huart.hdmatx);
+    __HAL_DMA_DISABLE(huart.hdmatx);
+}
+
+
+extern &quot;C&quot; void USART1_IRQHandler(void)
+{
+    uart1.OnUARTITHandler();
+}
+extern &quot;C&quot; void USART2_IRQHandler(void)
+{
+    uart2.OnUARTITHandler();
+}
+//extern &quot;C&quot; void USART6_IRQHandler(void)
+//{
+//  uart6.OnUARTITHandler();
+//}
+extern &quot;C&quot; void UART4_IRQHandler(void)
+{
+    uart4.OnUARTITHandler();
+}
+
+extern &quot;C&quot; void USART6_IRQHandler(void)//Question
+{
+    uart6.OnUARTITHandler();
+}
+
+extern &quot;C&quot; void DMA1_Stream2_IRQHandler(void)
+{
+}
+extern &quot;C&quot; void DMA1_Stream4_IRQHandler(void)
+{
+    uart4.OnDMAITHandler();
+}
+
+extern &quot;C&quot; void DMA2_Stream6_IRQHandler(void)
+{
+    uart6.OnDMAITHandler();
+}
+
+void UART::DMATransmit(uint8_t*const pData, const uint32_t Size) const
+{
+    __HAL_DMA_DISABLE(huart.hdmatx);
+    huart.hdmatx-&gt;Instance-&gt;NDTR = Size;
+    huart.hdmatx-&gt;Instance-&gt;M0AR = reinterpret_cast&lt;uint32_t&gt;(pData);
+    DMAClearAllFlags(huart.hdmatx);
+    __HAL_DMA_ENABLE(huart.hdmatx);
+}
+void UART::UARTTransmit(uint8_t* pData, uint32_t Size)
+{
+    HAL_UART_Transmit(&amp;huart, static_cast&lt;uint8_t*&gt;(pData), Size, 0xffff);
+}
+
+extern &quot;C&quot; void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+{
+}
+
+</code></pre>
+<p>将我们的项目文件添加如上两个文件，文件中包括USART通信的收发方式，可以更方便我们使用USART通信来进行扩展模块代码的编写。</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p>Copyright © 2021 ASR-Crash, Mike.Han, R.P.Su</p>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
